@@ -21,6 +21,8 @@ RUN apt-get update && apt-get install -y \
     xz-utils \
     git \
     ca-certificates \
+    default-libmysqlclient-dev \
+    gcc \
     && rm -rf /var/lib/apt/lists/*
 
 # Python ソースをダウンロード＆ビルド
@@ -38,10 +40,3 @@ COPY requirements.txt /app/
 # pip アップグレード
 RUN python3.13 -m ensurepip && python3.13 -m pip install --upgrade pip
 RUN python3.13 -m pip install -r requirements.txt
-
-COPY . /app/
-COPY manage.py /app/
-COPY entrypoint.sh /app/entrypoint.sh
-RUN chmod +x /app/entrypoint.sh
-
-# CMD ["sh", "/app/entrypoint.sh"]

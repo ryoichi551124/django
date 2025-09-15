@@ -4,15 +4,6 @@ echo "ENV=${ENV}"
 
 echo "Collect static files..."
 python3.13 manage.py collectstatic --noinput
-python3.13 manage.py migrate
-
-python3.13 manage.py shell << EOF
-from django.contrib.auth import get_user_model
-User = get_user_model()
-if not User.objects.filter(username='admin').exists():
-    User.objects.create_superuser('admin', 'admin@example.com', 'password123')
-EOF
-
 
 if [ "$ENV" = "dev" ]; then
     echo "Starting Django in development mode with runserver..."

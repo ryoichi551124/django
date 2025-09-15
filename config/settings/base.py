@@ -82,12 +82,13 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': os.environ.get("DATABASE_NAME"),
         'USER': os.environ.get("DATABASE_USER"),
         'PASSWORD': os.environ.get("DATABASE_PASSWORD"),
         'HOST': os.environ.get("DATABASE_HOST"),
-        'PORT': '5432',
+        # 'PORT': '5432',
+        'PORT': '3306',
     }
 }
 
@@ -114,9 +115,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ja'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tokyo'
 
 USE_I18N = True
 
